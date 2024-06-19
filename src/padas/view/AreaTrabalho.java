@@ -34,16 +34,13 @@ public class AreaTrabalho extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/imgFundo/Background 4.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imgFundo/Padaria 2.jpg"));
         Image image = icon.getImage();
         painelDesktop = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics d){
                 d.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblLogado = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -59,8 +56,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
 
@@ -72,52 +67,18 @@ public class AreaTrabalho extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Utilizador:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 0, 12))); // NOI18N
-        jPanel1.setEnabled(false);
-
-        jLabel1.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
-        jLabel1.setText("Nome:");
-        jLabel1.setEnabled(false);
-
-        lblLogado.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        lblLogado.setText("Domingos Chivela");
-        lblLogado.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLogado)
-                .addGap(0, 525, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLogado)
-                    .addComponent(jLabel1))
-                .addGap(0, 10, Short.MAX_VALUE))
-        );
-
-        painelDesktop.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout painelDesktopLayout = new javax.swing.GroupLayout(painelDesktop);
         painelDesktop.setLayout(painelDesktopLayout);
         painelDesktopLayout.setHorizontalGroup(
             painelDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 675, Short.MAX_VALUE)
         );
         painelDesktopLayout.setVerticalGroup(
             painelDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDesktopLayout.createSequentialGroup()
-                .addGap(0, 217, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 237, Short.MAX_VALUE)
         );
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Cliente.png"))); // NOI18N
         jMenu1.setText("Clientes");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
@@ -131,6 +92,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Funcionario_2.png"))); // NOI18N
         jMenu2.setText("Funcionários");
 
         FichaFuncionarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
@@ -144,6 +106,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/fornecedores.png"))); // NOI18N
         jMenu3.setText("Fornecedores");
 
         FichaFornecedores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
@@ -157,11 +120,13 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Bread_1.png"))); // NOI18N
         jMenu4.setText("Produtos");
 
         jMenu8.setText("Meus Produtos");
 
         MenuStock.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        MenuStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Mercadoria 2.png"))); // NOI18N
         MenuStock.setText("Controle de Stock");
         MenuStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +135,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
         });
         jMenu8.add(MenuStock);
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Pesquisar_4.png"))); // NOI18N
         jMenuItem5.setText("Consulta Produtos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +145,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
         jMenu8.add(jMenuItem5);
 
         jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Cake 16px.png"))); // NOI18N
         jMenuItem11.setText("Formulário Produtos");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,14 +154,20 @@ public class AreaTrabalho extends javax.swing.JFrame {
         });
         jMenu8.add(jMenuItem11);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Categoria.png"))); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Category 16px.png"))); // NOI18N
         jMenuItem2.setText("Categorias");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem2);
 
         jMenu4.add(jMenu8);
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Sales 1.png"))); // NOI18N
         jMenu5.setText("Vendas");
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
@@ -208,19 +181,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setText("Configurações");
-
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem9.setText("Trocar Usuário");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem9);
-
-        jMenuBar1.add(jMenu6);
-
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Exit_2.png"))); // NOI18N
         jMenu7.setText("Sair");
 
         jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.ALT_MASK));
@@ -264,7 +225,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         this.setExtendedState(this.MAXIMIZED_BOTH);
-        lblLogado.setText(userLogado);
+//        lblLogado.setText(userLogado);
     }//GEN-LAST:event_formWindowActivated
 
     private void FichaFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FichaFuncionariosActionPerformed
@@ -298,12 +259,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
         fs.setVisible(true);
     }//GEN-LAST:event_MenuStockActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        FormularioLogin login = new FormularioLogin();
-        this.dispose();
-        login.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         int janela = JOptionPane.showConfirmDialog(null, "Deseja realmente sair do sistema?");
         if(janela==0){
@@ -311,6 +266,11 @@ public class AreaTrabalho extends javax.swing.JFrame {
         }else if(janela==2)
             JOptionPane.showMessageDialog(null, "Cancelando...");
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        FormularioCategorias fc = new FormularioCategorias();
+        fc.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,13 +311,11 @@ public class AreaTrabalho extends javax.swing.JFrame {
     public javax.swing.JMenuItem FichaFornecedores;
     public javax.swing.JMenuItem FichaFuncionarios;
     public javax.swing.JMenuItem MenuStock;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
@@ -367,9 +325,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblLogado;
     private javax.swing.JDesktopPane painelDesktop;
     // End of variables declaration//GEN-END:variables
 }

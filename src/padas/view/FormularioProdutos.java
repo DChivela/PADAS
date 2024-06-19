@@ -232,7 +232,7 @@ public class FormularioProdutos extends javax.swing.JFrame {
 
         painelDadosPessoaisLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbCategoria, txtPreco});
 
-        Painel_Guias.addTab("Dados Produtos", painelDadosPessoais);
+        Painel_Guias.addTab("Geral", painelDadosPessoais);
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -263,7 +263,7 @@ public class FormularioProdutos extends javax.swing.JFrame {
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
-        Painel_Guias.addTab("Consultar  Produtos", jPanel3);
+        Painel_Guias.addTab("Lista de  Produtos", jPanel3);
 
         btnNovo.setText("NOVO");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {

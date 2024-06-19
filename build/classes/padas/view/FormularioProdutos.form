@@ -111,8 +111,8 @@
             <Container class="javax.swing.JPanel" name="painelDadosPessoais">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Dados Produtos">
-                    <Property name="tabTitle" type="java.lang.String" value="Dados Produtos"/>
+                  <JTabbedPaneConstraints tabName="Geral">
+                    <Property name="tabTitle" type="java.lang.String" value="Geral"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -293,8 +293,8 @@
             <Container class="javax.swing.JPanel" name="jPanel3">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Consultar  Produtos">
-                    <Property name="tabTitle" type="java.lang.String" value="Consultar  Produtos"/>
+                  <JTabbedPaneConstraints tabName="Lista de  Produtos">
+                    <Property name="tabTitle" type="java.lang.String" value="Lista de  Produtos"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
