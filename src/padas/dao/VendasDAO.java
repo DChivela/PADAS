@@ -25,13 +25,14 @@ public class VendasDAO {
    
    public void Salvar(Vendas obj){ //CRTL + SHIFT + i para corrigir as importações
        try {
-           String sql = "insert into tb_vendas (cliente_id, data_venda, total_venda, observacoes)"
+           String sql = "insert into vendas (data, totalVenda, clienteID, funcionarioID)"
                    + "values(?, ?, ?, ? )";
            PreparedStatement stmt = conn.prepareStatement(sql);
-           stmt.setInt(1, obj.getClientes().getId());
-           stmt.setString(2, obj.getData_venda());
-           stmt.setDouble(3, obj.getTotal_venda());
-           stmt.setString(4, obj.getObservacoes());
+           stmt.setString(1, obj.getData());
+           stmt.setDouble(2, obj.getTotalVenda());
+           stmt.setInt(3, obj.getClientes().getId());
+           stmt.setInt(4, obj.getFuncionario().getId());
+           
            stmt.execute();
            stmt.close();
            JOptionPane.showMessageDialog(null, "Venda realizada com sucesso!");

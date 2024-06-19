@@ -36,7 +36,7 @@ public class FormularioVendas extends javax.swing.JFrame {
                 c.getDescricao(),
                 c.getPreco(),
                 c.getStock(),
-                c.getFornecedor()
+                c.getCategoria()
 
             });
         }
@@ -135,7 +135,7 @@ public class FormularioVendas extends javax.swing.JFrame {
         txtData.setEnabled(false);
         txtData.setFont(new java.awt.Font("Cambria Math", 1, 11)); // NOI18N
 
-        jLabel2.setText("NIF");
+        jLabel2.setText("Codigo");
 
         jLabel3.setText("Data");
 
@@ -486,28 +486,12 @@ public class FormularioVendas extends javax.swing.JFrame {
         txtCodigo.setEnabled(false);
     }//GEN-LAST:event_tabelaProdutoMouseClicked
 
-    private void txtNifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNifKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String nif = txtNif.getText();
-
-            ClientesDAO dao = new ClientesDAO();
-
-            obj = dao.BuscarClienteNIF(nif);
-            if (obj.getNif() != null) {
-                txtNome.setText(obj.getNome());
-            } else {
-                JOptionPane.showMessageDialog(null, "NIF inválido!");
-            }
-
-        }
-    }//GEN-LAST:event_txtNifKeyPressed
-
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         String nif = txtNif.getText();
 
         ClientesDAO dao = new ClientesDAO();
 
-        obj = dao.BuscarClienteNIF(nif);
+        obj = dao.BuscarClienteCodigo(nif);
         if (obj.getNif() != null) {
             txtNome.setText(obj.getNome());
         } else {
@@ -637,6 +621,22 @@ public class FormularioVendas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor verifique se todos os campos \n encontram-se devidamente preenchidos! \n Verifique os campos Nome e/ou NIF.");
         }
     }//GEN-LAST:event_btnPagamentoActionPerformed
+
+    private void txtNifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNifKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String nif = txtNif.getText();
+
+            ClientesDAO dao = new ClientesDAO();
+
+            obj = dao.BuscarClienteNIF(nif);
+            if (obj.getNif() != null) {
+                txtNome.setText(obj.getNome());
+            } else {
+                JOptionPane.showMessageDialog(null, "NIF inválido!");
+            }
+
+        }
+    }//GEN-LAST:event_txtNifKeyPressed
 
     /**
      * @param args the command line arguments

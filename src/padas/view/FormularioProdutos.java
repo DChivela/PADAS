@@ -38,8 +38,8 @@ public class FormularioProdutos extends javax.swing.JFrame {
                 c.getId(),
                 c.getDescricao(),
                 c.getPreco(),
-                c.getStock(),
-                c.getCategoria()
+                c.getCategoria(),
+                c.getStock()
 
             });
         }
@@ -74,9 +74,6 @@ public class FormularioProdutos extends javax.swing.JFrame {
         cbCategoria = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        txtPesquisaDescricao = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        btnPesquisa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         btnNovo = new javax.swing.JButton();
@@ -237,32 +234,12 @@ public class FormularioProdutos extends javax.swing.JFrame {
 
         Painel_Guias.addTab("Dados Produtos", painelDadosPessoais);
 
-        txtPesquisaDescricao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPesquisaDescricaoActionPerformed(evt);
-            }
-        });
-        txtPesquisaDescricao.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtPesquisaDescricaoKeyReleased(evt);
-            }
-        });
-
-        jLabel15.setText("Descrição");
-
-        btnPesquisa.setText("Pesquisar");
-        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisaActionPerformed(evt);
-            }
-        });
-
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Descrição", "Preço", "Qtd. Stock", "Categoria"
+                "Código", "Descrição", "Preço", "Categoria", "Qtd. Stock"
             }
         ));
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,25 +253,12 @@ public class FormularioProdutos extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtPesquisaDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(btnPesquisa)
-                .addContainerGap(380, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPesquisaDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisa))
-                .addGap(30, 30, 30)
+                .addGap(71, 71, 71)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(61, Short.MAX_VALUE))
         );
@@ -400,29 +364,12 @@ public class FormularioProdutos extends javax.swing.JFrame {
         util.LimpaTela(painelDadosPessoais);
     }//GEN-LAST:event_btnNovoActionPerformed
 
-    private void txtPesquisaDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaDescricaoActionPerformed
-        // Método para pesquisar e filtrar os dados da tabela pelo campo.
-        String nome = "%" + txtPesquisaDescricao.getText() + "%";
-        ProdutosDAO dao = new ProdutosDAO();
-        List<Produtos> lista = dao.Filtrar(nome);
-        DefaultTableModel dados = (DefaultTableModel) tabela.getModel();
-        dados.setNumRows(0);
-        for (Produtos p : lista) {
-            dados.addRow(new Object[]{
-                p.getId(),
-                p.getDescricao(),
-                p.getPreco(),
-                p.getStock(),
-                p.getCategoria().getNome(),});
-        }
-    }//GEN-LAST:event_txtPesquisaDescricaoActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Produtos obj = new Produtos();
         obj.setDescricao(txtDescricao.getText());
         obj.setPreco(Double.valueOf(txtPreco.getText()));
-        obj.setStock(Integer.valueOf(txtStock.getText()));
         obj.setCategoria((Categorias) cbCategoria.getSelectedItem());
+        obj.setStock(Integer.valueOf(txtStock.getText()));
 
         ProdutosDAO dao = new ProdutosDAO();
         dao.Salvar(obj);
@@ -453,24 +400,6 @@ public class FormularioProdutos extends javax.swing.JFrame {
         listar();
     }//GEN-LAST:event_formWindowActivated
 
-    private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
-        // Método para pesquisar e filtrar os dados da tabela pelo botão Pesquisar.
-        String nome = "%" + txtPesquisaDescricao.getText() + "%";
-        ProdutosDAO dao = new ProdutosDAO();
-        List<Produtos> lista = dao.Filtrar(nome);
-        DefaultTableModel dados = (DefaultTableModel) tabela.getModel();
-        dados.setNumRows(0);
-        for (Produtos p : lista) {
-            dados.addRow(new Object[]{
-                p.getId(),
-                p.getDescricao(),
-                p.getPreco(),
-                p.getStock(),
-                p.getCategoria().getId(),});
-        }
-
-    }//GEN-LAST:event_btnPesquisaActionPerformed
-
     private void txtDescricaoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String nome = txtDescricao.getText();
@@ -500,11 +429,10 @@ public class FormularioProdutos extends javax.swing.JFrame {
         obj.setId(Integer.valueOf(txtCodigo.getText()));
         obj.setDescricao(txtDescricao.getText());
         obj.setPreco(Double.valueOf(txtPreco.getText()));
-        obj.setStock(Integer.valueOf(txtStock.getText()));
-
         Categorias c = new Categorias();
         c = (Categorias) cbCategoria.getSelectedItem();
         obj.setCategoria(c);
+        obj.setStock(Integer.valueOf(txtStock.getText()));
 
         ProdutosDAO daop = new ProdutosDAO();
         daop.Editar(obj);
@@ -527,34 +455,22 @@ public class FormularioProdutos extends javax.swing.JFrame {
         txtCodigo.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
         txtDescricao.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
         txtPreco.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
-        txtStock.setText(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
+        txtStock.setText(tabela.getValueAt(tabela.getSelectedRow(), 4).toString());
 
         Fornecedores f = new Fornecedores();
         FornecedoresDAO daof = new FornecedoresDAO();
-        f = daof.BuscarFornecedores(tabela.getValueAt(tabela.getSelectedRow(), 4).toString());
+        f = daof.BuscarFornecedores(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
         cbCategoria.removeAllItems();
         cbCategoria.getModel().setSelectedItem(f);
     }//GEN-LAST:event_tabelaMouseClicked
 
-    private void txtPesquisaDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaDescricaoKeyReleased
-        // Método para pesquisar e filtrar os dados da tabela pelo botão Pesquisar.
-        String nome = "%" + txtPesquisaDescricao.getText() + "%";
-        ProdutosDAO dao = new ProdutosDAO();
-        List<Produtos> lista = dao.Filtrar(nome);
-        DefaultTableModel dados = (DefaultTableModel) tabela.getModel();
-        dados.setNumRows(0);
-        for (Produtos p : lista) {
-            dados.addRow(new Object[]{
-                p.getId(),
-                p.getDescricao(),
-                p.getPreco(),
-                p.getStock(),
-                p.getCategoria().getNome(),});
-        }
-    }//GEN-LAST:event_txtPesquisaDescricaoKeyReleased
-
     private void cbCategoriaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_cbCategoriaAncestorAdded
-        // TODO add your handling code here:
+        CategoriasDAO dao = new CategoriasDAO();
+        List<Categorias> lista = dao.Listar();
+        cbCategoria.removeAllItems();
+        for (Categorias c : lista) {
+            cbCategoria.addItem(c);
+        }
     }//GEN-LAST:event_cbCategoriaAncestorAdded
 
     private void cbCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbCategoriaMouseClicked
@@ -607,13 +523,11 @@ public class FormularioProdutos extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox cbCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -625,7 +539,6 @@ public class FormularioProdutos extends javax.swing.JFrame {
     private javax.swing.JTable tabela;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescricao;
-    private javax.swing.JTextField txtPesquisaDescricao;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables

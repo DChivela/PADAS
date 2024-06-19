@@ -34,7 +34,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/imgFundo/FundoAzulTapiz.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imgFundo/Background 4.jpg"));
         Image image = icon.getImage();
         painelDesktop = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics d){
@@ -118,7 +118,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Cliente.png"))); // NOI18N
         jMenu1.setText("Clientes");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
@@ -132,7 +131,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Funcionario.png"))); // NOI18N
         jMenu2.setText("Funcionários");
 
         FichaFuncionarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
@@ -146,7 +144,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Fornecedor (2).png"))); // NOI18N
         jMenu3.setText("Fornecedores");
 
         FichaFornecedores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
@@ -160,7 +157,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Producto.png"))); // NOI18N
         jMenu4.setText("Produtos");
 
         jMenu8.setText("Meus Produtos");
@@ -191,6 +187,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
         });
         jMenu8.add(jMenuItem11);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padas/imagens/Categoria.png"))); // NOI18N
         jMenuItem2.setText("Categorias");
         jMenu8.add(jMenuItem2);
 
@@ -198,7 +195,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Sales.png"))); // NOI18N
         jMenu5.setText("Vendas");
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
@@ -212,7 +208,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Config.png"))); // NOI18N
         jMenu6.setText("Configurações");
 
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
@@ -226,7 +221,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Exit_2.png"))); // NOI18N
         jMenu7.setText("Sair");
 
         jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.ALT_MASK));
@@ -274,8 +268,8 @@ public class AreaTrabalho extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void FichaFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FichaFuncionariosActionPerformed
-        FormularioFuncionarios ff = new FormularioFuncionarios(this, true);
-        ff.setModal(rootPaneCheckingEnabled);
+        FormularioFuncionarios ff = new FormularioFuncionarios();
+        //ff.setModal(rootPaneCheckingEnabled);
         ff.setVisible(true);
     }//GEN-LAST:event_FichaFuncionariosActionPerformed
 
@@ -286,21 +280,21 @@ public class AreaTrabalho extends javax.swing.JFrame {
     }//GEN-LAST:event_FichaFornecedoresActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        FormularioProdutos fp = new FormularioProdutos(this, true);
-        fp.setModal(rootPaneCheckingEnabled);
+        FormularioProdutos fp = new FormularioProdutos();
+        //fp.setModal(rootPaneCheckingEnabled);
         fp.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        FormularioProdutos ConsultaProdutos = new FormularioProdutos(this, true);
-        ConsultaProdutos.setModal(rootPaneCheckingEnabled);
+        FormularioProdutos ConsultaProdutos = new FormularioProdutos();
+        //ConsultaProdutos.setModal(rootPaneCheckingEnabled);
         ConsultaProdutos.Painel_Guias.setSelectedIndex(1);
         ConsultaProdutos.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void MenuStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuStockActionPerformed
-        FormularioStock fs = new FormularioStock(this,true);
-        fs.setModal(rootPaneCheckingEnabled);
+        FormularioStock fs = new FormularioStock();
+        //fs.setModal(rootPaneCheckingEnabled);
         fs.setVisible(true);
     }//GEN-LAST:event_MenuStockActionPerformed
 

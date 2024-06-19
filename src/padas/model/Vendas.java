@@ -11,10 +11,10 @@ package padas.model;
  */
 public class Vendas {
     private int id;
+    private String data;
+    private double totalVenda;
     private Clientes clientes;
-    private String data_venda;
-    private double total_venda;
-    private String observacoes;
+    private Funcionarios funcionario;
 
     public int getId() {
         return id;
@@ -22,6 +22,22 @@ public class Vendas {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public double getTotalVenda() {
+        return totalVenda;
+    }
+
+    public void setTotalVenda(double totalVenda) {
+        this.totalVenda = totalVenda;
     }
 
     public Clientes getClientes() {
@@ -32,30 +48,13 @@ public class Vendas {
         this.clientes = clientes;
     }
 
-    public String getData_venda() {
-        return data_venda;
+    public Funcionarios getFuncionario() {
+        return funcionario;
     }
 
-    public void setData_venda(String data_venda) {
-        this.data_venda = data_venda;
+    public void setFuncionario(Funcionarios funcionario) {
+        this.funcionario = funcionario;
     }
 
-    public double getTotal_venda() {
-        return total_venda;
-    }
-
-    public void setTotal_venda(double total_venda) {
-        this.total_venda = total_venda;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-    
-    
-      
+  
 }

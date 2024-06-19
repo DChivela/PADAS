@@ -36,8 +36,8 @@ public class ProdutosDAO {
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setString(1,obj.getDescricao());
            stmt.setDouble(2,obj.getPreco());
-           stmt.setInt(3,obj.getStock());
-           stmt.setInt(4,obj.getCategoria().getId());
+           stmt.setInt(3,obj.getCategoria().getId());
+           stmt.setInt(4,obj.getStock());
 
            //3ºExecutar 
            stmt.execute();
@@ -139,8 +139,8 @@ public class ProdutosDAO {
    public List<Produtos>Listar(){
        List<Produtos> lista = new ArrayList<>();
        try {
-           String sql = "Select p.produtoID, p.descricao, p.preco, p.estoque, c.nome from Produtos as p inner join"
-                   + " categorias as c on(p.produtoID=c.categoriaID)";
+           String sql = "Select p.produtoID, p.descricao, p.preco, c.nome, p.estoque from Produtos as p inner join"
+                   + " categorias as c on(p.categoriaID=c.categoriaID)";
            PreparedStatement stmt = conn.prepareStatement(sql);
            ResultSet rs = stmt.executeQuery();
            
@@ -150,9 +150,10 @@ public class ProdutosDAO {
                obj.setId(rs.getInt("produtoID"));
                obj.setDescricao(rs.getString("Descricao"));
                obj.setPreco(rs.getDouble("Preco"));
-               c.setNome(rs.getString("c.nome")); 
+               c.setNome(rs.getString("c.nome"));
+               obj.setCategoria(c); 
                obj.setStock(rs.getInt("estoque")); 
-               obj.setCategoria(c);
+               
                lista.add(obj);//A variável lista servirá para adicionar o obj dentro da lista criada.
            }
            return lista; //Retorno do que estiver dentro da lista.
@@ -164,8 +165,8 @@ public class ProdutosDAO {
       public List<Produtos>Filtrar(String nome){
        List<Produtos> lista = new ArrayList<>();
        try {
-           String sql = "Select p.produtoID, p.descricao, p.preco, p.estoque, c.nome from Produtos as p inner join"
-                  + " categorias as c on(p.produtoID=c.categoriaID) where p.descricao = ?";
+           String sql = "Select p.produtoID, p.descricao, p.preco, c.nome, p.estoque from Produtos as p inner join"
+                   + " categorias as c on(p.categoriaID=c.categoriaID) where p.descricao = ?";
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setString(1, nome);
            ResultSet rs = stmt.executeQuery();
@@ -176,9 +177,10 @@ public class ProdutosDAO {
                obj.setId(rs.getInt("produtoID"));
                obj.setDescricao(rs.getString("Descricao"));
                obj.setPreco(rs.getDouble("Preco"));
-               c.setNome(rs.getString("c.nome")); 
+               c.setNome(rs.getString("c.nome"));
+               obj.setCategoria(c); 
                obj.setStock(rs.getInt("estoque")); 
-               obj.setCategoria(c);
+               
                lista.add(obj);//A variável lista servirá para adicionar o obj dentro da lista criada.
            }
            return lista; //Retorno do que estiver dentro da lista.

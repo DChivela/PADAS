@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import padas.dao.ClientesDAO;
 import padas.dao.FornecedoresDAO;
 import padas.dao.ProdutosDAO;
+import padas.model.Categorias;
 import padas.model.Clientes;
 import padas.model.Fornecedores;
 import padas.model.Produtos;
@@ -22,7 +23,7 @@ import padas.utilitarios.Utilitarios;
  *
  * @author domin
  */
-public class FormularioStock extends javax.swing.JDialog {
+public class FormularioStock extends javax.swing.JFrame {
 int idProduto, qtdActualizada;
     /**
      * Creates new form FormularioClientes
@@ -38,13 +39,13 @@ int idProduto, qtdActualizada;
             c.getDescricao(),
             c.getPreco(),
             c.getStock(),
-            c.getFornecedor()
+            c.getCategoria()
             
             });
         }
     }
-    public FormularioStock(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public FormularioStock() {
+//        super(parent, modal);
         initComponents();
     }
 
@@ -62,7 +63,6 @@ int idProduto, qtdActualizada;
         Painel_Guias = new javax.swing.JTabbedPane();
         painelStock = new javax.swing.JPanel();
         txtStock_Actual = new javax.swing.JTextField();
-        btnPesquisar = new javax.swing.JButton();
         txtDescricao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -75,7 +75,6 @@ int idProduto, qtdActualizada;
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-        btnImprimir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -103,15 +102,6 @@ int idProduto, qtdActualizada;
         txtStock_Actual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStock_ActualActionPerformed(evt);
-            }
-        });
-
-        btnPesquisar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Pesquisar_4.png"))); // NOI18N
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
             }
         });
 
@@ -152,7 +142,6 @@ int idProduto, qtdActualizada;
         });
 
         btnAdiconar.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        btnAdiconar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Novo_3.png"))); // NOI18N
         btnAdiconar.setText("Adicionar");
         btnAdiconar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,9 +161,7 @@ int idProduto, qtdActualizada;
                             .addGroup(painelStockLayout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnPesquisar))
+                                .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(painelStockLayout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -204,9 +191,7 @@ int idProduto, qtdActualizada;
                     .addGroup(painelStockLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(txtDescricao))
-                    .addGroup(painelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel3))
                 .addGap(26, 26, 26)
                 .addGroup(painelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -220,7 +205,6 @@ int idProduto, qtdActualizada;
         Painel_Guias.addTab("Dados Produtos", painelStock);
 
         btnNovo.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Novo_2.png"))); // NOI18N
         btnNovo.setText("NOVO");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +213,6 @@ int idProduto, qtdActualizada;
         });
 
         btnSalvar.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Save_1.png"))); // NOI18N
         btnSalvar.setText("SALVAR");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,7 +221,6 @@ int idProduto, qtdActualizada;
         });
 
         btnEditar.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Edite_2.png"))); // NOI18N
         btnEditar.setText("EDITAR");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,17 +229,12 @@ int idProduto, qtdActualizada;
         });
 
         btnExcluir.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/excluir.png"))); // NOI18N
         btnExcluir.setText("EXCLUIR");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
             }
         });
-
-        btnImprimir.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/Printer_2.png"))); // NOI18N
-        btnImprimir.setText("IMPRIMIR");
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Produtos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -306,9 +283,7 @@ int idProduto, qtdActualizada;
                 .addComponent(btnEditar)
                 .addGap(27, 27, 27)
                 .addComponent(btnExcluir)
-                .addGap(32, 32, 32)
-                .addComponent(btnImprimir)
-                .addGap(60, 60, 60))
+                .addGap(179, 179, 179))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Painel_Guias, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -325,8 +300,7 @@ int idProduto, qtdActualizada;
                     .addComponent(btnNovo)
                     .addComponent(btnSalvar)
                     .addComponent(btnEditar)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnImprimir))
+                    .addComponent(btnExcluir))
                 .addGap(49, 49, 49))
         );
 
@@ -379,22 +353,6 @@ int idProduto, qtdActualizada;
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-       String nome = txtDescricao.getText();
-       Clientes obj = new Clientes();
-       ClientesDAO dao = new ClientesDAO();
-       
-       obj = dao.BuscarCliente(nome);
-       if(obj.getNome() != null ){
-           txtCodigo.setText(String.valueOf(obj.getId()));
-           txtDescricao.setText(obj.getNome());
-           txtStock_Actual.setText(obj.getEmail());
-           txtStock_Novo.setText(String.valueOf(obj.getNumero()));
-       }else{
-           JOptionPane.showMessageDialog(null,"Cliente não encontrado!");
-       }
-    }//GEN-LAST:event_btnPesquisarActionPerformed
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // Parte priorizada antes de ser executada qualquer coisa no código.
         listar();
@@ -402,19 +360,19 @@ int idProduto, qtdActualizada;
 
     private void txtDescricaoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyPressed
         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-                   String nome = txtDescricao.getText();
-       Clientes obj = new Clientes();
-       ClientesDAO dao = new ClientesDAO();
-       
-       obj = dao.BuscarCliente(nome);
-       if(obj.getNome() != null ){
-           txtCodigo.setText(String.valueOf(obj.getId()));
-           txtDescricao.setText(obj.getNome());
-           txtStock_Actual.setText(obj.getEmail());
-           txtStock_Novo.setText(String.valueOf(obj.getNumero()));
-       }else{
-           JOptionPane.showMessageDialog(null,"Cliente não encontrado!");
-       }
+//                   String nome = txtDescricao.getText();
+//       Clientes obj = new Clientes();
+//       ClientesDAO dao = new ClientesDAO();
+//       
+//       obj = dao.BuscarCliente(nome);
+//       if(obj.getNome() != null ){
+//           txtCodigo.setText(String.valueOf(obj.getId()));
+//           txtDescricao.setText(obj.getNome());
+//           txtStock_Actual.setText(obj.get());
+//           txtStock_Novo.setText(String.valueOf(obj.getNumero()));
+//       }else{
+//           JOptionPane.showMessageDialog(null,"Cliente não encontrado!");
+//       }
             
         }
     }//GEN-LAST:event_txtDescricaoKeyPressed
@@ -426,8 +384,8 @@ int idProduto, qtdActualizada;
         obj.setPreco(Double.valueOf(txtStock_Actual.getText()));
         obj.setStock(Integer.valueOf(txtStock_Novo.getText()));
         
-        Fornecedores f = new Fornecedores();
-                obj.setFornecedor(f);
+        Categorias c = new Categorias();
+                obj.setCategoria(c);
         
         ProdutosDAO daop = new ProdutosDAO();
         daop.Editar(obj);
@@ -500,7 +458,7 @@ int idProduto, qtdActualizada;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new FormularioStock().setVisible(true);
+                new FormularioStock().setVisible(true);
             }
         });
     }
@@ -510,9 +468,7 @@ int idProduto, qtdActualizada;
     private javax.swing.JButton btnAdiconar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
