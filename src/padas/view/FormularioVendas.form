@@ -127,7 +127,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtNome" pref="109" max="32767" attributes="0"/>
-                              <Component id="txtNif" max="32767" attributes="0"/>
+                              <Component id="txtCodigoCliente" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -154,7 +154,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNif" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCodigoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -234,8 +234,8 @@
                     <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
                     <Column editable="true" title="Descri&#xe7;&#xe3;o" type="java.lang.Object"/>
                     <Column editable="true" title="Pre&#xe7;o (AKZ)" type="java.lang.Object"/>
+                    <Column editable="true" title="Categoria" type="java.lang.Object"/>
                     <Column editable="true" title="Qtd. Stock" type="java.lang.Object"/>
-                    <Column editable="true" title="Fornecedor" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -279,9 +279,9 @@
         </Container>
         <Component class="javax.swing.JTextField" name="txtNome">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNif">
+        <Component class="javax.swing.JTextField" name="txtCodigoCliente">
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNifKeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoClienteKeyPressed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="PainelProduto">
@@ -325,7 +325,7 @@
                                       <Component id="jLabel8" min="-2" pref="50" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtPreco" linkSize="3" min="-2" pref="79" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="txtDesconto" min="-2" pref="65" max="-2" attributes="0"/>
@@ -365,14 +365,12 @@
                           <Component id="txtProduto" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPreco" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtDesconto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPreco" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -440,21 +438,11 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnAdicionar">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/sigest/imagens/novo_1.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="ADD ITEM"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdicionarActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel16">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Desconto (%)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="txtDesconto">
             </Component>
             <Component class="javax.swing.JButton" name="txtPesquisa">
               <Properties>
@@ -471,6 +459,13 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel16">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Desconto (%)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="txtDesconto">
             </Component>
           </SubComponents>
         </Container>

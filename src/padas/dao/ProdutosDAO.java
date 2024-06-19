@@ -52,13 +52,13 @@ public class ProdutosDAO {
       public void Editar(Produtos obj){
        try {
            //1º Criar o SQL
-           String sql = "update produtos set descricao=?, preco=?, qtd_stock=?, categoriaID=? where produtoID=?";
+           String sql = "update produtos set descricao=?, preco=?, categoriaID=?, estoque=? where produtoID=?";
            //2ºPreparar a conexão SQL para se conectar com o Banco
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setString(1,obj.getDescricao());
            stmt.setDouble(2,obj.getPreco());
-           stmt.setInt(3,obj.getStock());
-           stmt.setInt(4,obj.getCategoria().getId());
+           stmt.setInt(4,obj.getStock());
+           stmt.setInt(3,obj.getCategoria().getId());
            stmt.setInt(5,obj.getId());
            //3ºExecutar 
            stmt.execute();
@@ -85,7 +85,7 @@ public class ProdutosDAO {
    
    public Produtos BuscarProdutos(String nome){
        try {
-           String sql = "Select p.produtoID, p.descricao, p.preco, p.estoque, c.nome from Produtos as p inner join"
+           String sql = "Select p.produtoID, p.descricao, p.preco, c.nome, p.estoque from Produtos as p inner join"
                    + " categorias as c on(p.produtoID=c.categoriaID) where p.descricao = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, nome);
@@ -97,9 +97,9 @@ public class ProdutosDAO {
                 obj.setDescricao(rs.getString("p.descricao"));
                 obj.setPreco(rs.getDouble("p.preco"));
                 obj.setStock(rs.getInt("p.estoque"));
-                
                 c.setNome(rs.getString("c.nome"));
                 obj.setCategoria(c);
+                
             }   
             return obj;
            
@@ -109,31 +109,31 @@ public class ProdutosDAO {
        return null;
     }
    
-//   public Produtos BuscarProdutosCodigo(int id){
-//       try {
-//           String sql = "Select p.produtoID, p.descricao, p.preco, p.estoque, c.nome from Produtos as p inner join"
-//                   + " categorias as c on(p.produtoID=c.categoriaID) where p.descricao = ?";
-//            PreparedStatement stmt = conn.prepareStatement(sql);
-//            stmt.setInt(1, id);
-//            ResultSet rs = stmt.executeQuery();
-//            Produtos obj = new Produtos();
-//            Fornecedores f = new Fornecedores();
-//            if(rs.next()){
-//                obj.setId(rs.getInt("p.id"));
-//                obj.setDescricao(rs.getString("p.descricao"));
-//                obj.setPreco(rs.getDouble("p.preco"));
-//                obj.setStock(rs.getInt("p.Qtd_Stock"));
-//                
-//                f.setNome(rs.getString("f.nome"));
-//                obj.setFornecedor(f);
-//            }   
-//            return obj;
-//           
-//       } catch (SQLException erro) { //Caso alguma coisa deia errado
-//           JOptionPane.showMessageDialog(null, "Erro ao buscar o produto"+ erro);
-//       }
-//       return null;
-//    }
+   public Produtos BuscarProdutosCodigo(int id){
+       try {
+           String sql = "Select p.produtoID, p.descricao, p.preco, c.nome, p.estoque from Produtos as p inner join"
+                   + " categorias as c on(p.produtoID=c.categoriaID) where p.produtoID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            Produtos obj = new Produtos();
+            Categorias c = new Categorias();
+            if(rs.next()){
+                obj.setId(rs.getInt("p.produtoID"));
+                obj.setDescricao(rs.getString("p.descricao"));
+                obj.setPreco(rs.getDouble("p.preco"));
+                obj.setStock(rs.getInt("p.estoque"));
+                c.setNome(rs.getString("c.nome"));
+                obj.setCategoria(c);
+                
+            }   
+            return obj;
+           
+       } catch (SQLException erro) { //Caso alguma coisa deia errado
+           JOptionPane.showMessageDialog(null, "Erro ao buscar o produto"+ erro);
+       }
+       return null;
+    }
    
    //Método para listar os produtos  do Banco de Dados
    public List<Produtos>Listar(){

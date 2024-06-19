@@ -74,7 +74,7 @@ public class FormularioVendas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProduto = new javax.swing.JTable();
         txtNome = new javax.swing.JTextField();
-        txtNif = new javax.swing.JTextField();
+        txtCodigoCliente = new javax.swing.JTextField();
         PainelProduto = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -87,10 +87,10 @@ public class FormularioVendas extends javax.swing.JFrame {
         txtProduto = new javax.swing.JTextField();
         txtQtd = new javax.swing.JTextField();
         btnAdicionar = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
-        txtDesconto = new javax.swing.JFormattedTextField();
         txtPesquisa = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        txtDesconto = new javax.swing.JFormattedTextField();
         jPanel5 = new javax.swing.JPanel();
         TotalVenda = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -161,7 +161,7 @@ public class FormularioVendas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Descrição", "Preço (AKZ)", "Qtd. Stock", "Fornecedor"
+                "Código", "Descrição", "Preço (AKZ)", "Categoria", "Qtd. Stock"
             }
         ));
         tabelaProduto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,9 +171,9 @@ public class FormularioVendas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaProduto);
 
-        txtNif.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCodigoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNifKeyPressed(evt);
+                txtCodigoClienteKeyPressed(evt);
             }
         });
 
@@ -203,15 +203,12 @@ public class FormularioVendas extends javax.swing.JFrame {
 
         txtQtd.setText("1");
 
-        btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sigest/imagens/novo_1.png"))); // NOI18N
         btnAdicionar.setText("ADD ITEM");
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarActionPerformed(evt);
             }
         });
-
-        jLabel16.setText("Desconto (%)");
 
         txtPesquisa.setText("Pesquisar");
         txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
@@ -226,6 +223,8 @@ public class FormularioVendas extends javax.swing.JFrame {
                 btnLimparActionPerformed(evt);
             }
         });
+
+        jLabel16.setText("Desconto (%)");
 
         javax.swing.GroupLayout PainelProdutoLayout = new javax.swing.GroupLayout(PainelProduto);
         PainelProduto.setLayout(PainelProdutoLayout);
@@ -256,7 +255,7 @@ public class FormularioVendas extends javax.swing.JFrame {
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -289,13 +288,12 @@ public class FormularioVendas extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel16)
-                        .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionar)
@@ -325,7 +323,7 @@ public class FormularioVendas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(txtNif))
+                            .addComponent(txtCodigoCliente))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -345,7 +343,7 @@ public class FormularioVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -487,15 +485,15 @@ public class FormularioVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaProdutoMouseClicked
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        String nif = txtNif.getText();
+        int id = Integer.valueOf(txtCodigo.getText());
 
         ClientesDAO dao = new ClientesDAO();
 
-        obj = dao.BuscarClienteCodigo(nif);
-        if (obj.getNif() != null) {
+        obj = dao.BuscarClienteCodigo(id);
+        if (Integer.valueOf(obj.getId())!= null) {
             txtNome.setText(obj.getNome());
         } else {
-            JOptionPane.showMessageDialog(null, "NIF inválido!");
+            JOptionPane.showMessageDialog(null, "Código inválido!");
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
@@ -564,8 +562,8 @@ public class FormularioVendas extends javax.swing.JFrame {
                 p.getId(),
                 p.getDescricao(),
                 p.getPreco(),
-                p.getStock(),
-                p.getFornecedor().getNome(),
+                p.getCategoria().getNome(),
+                p.getStock()
             });
             txtCodigo.setEnabled(false);
         }
@@ -604,12 +602,12 @@ public class FormularioVendas extends javax.swing.JFrame {
 
     private void btnPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagamentoActionPerformed
         String nome = txtNome.getText(); //Criando a variável nome
-        String Nif = txtNif.getText();
+        int id = Integer.valueOf(txtCodigo.getText());
         obj = new Clientes();
         ClientesDAO daoc = new ClientesDAO(); //Instanciando a classe ClientesDAO
         obj = daoc.BuscarCliente(nome);
-        obj = daoc.BuscarClienteNIF(Nif);
-        if(obj.getNome()!=null && obj.getNif()!=null){
+        obj = daoc.BuscarClienteCodigo(id);
+        if(obj.getNome()!=null && Integer.valueOf(obj.getId())!=null){
             FormularioPagamentos telaPagamento = new FormularioPagamentos();
             telaPagamento.clientes = obj; //Tirado da instância que fiz no Formulário de Pagamentos
             telaPagamento.meusProdutos = meusProdutos; //Tirado da instância que fiz no Formulário de Pagamentos
@@ -622,21 +620,21 @@ public class FormularioVendas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPagamentoActionPerformed
 
-    private void txtNifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNifKeyPressed
+    private void txtCodigoClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoClienteKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String nif = txtNif.getText();
+            int codigo = Integer.valueOf(txtCodigoCliente.getText());
 
             ClientesDAO dao = new ClientesDAO();
 
-            obj = dao.BuscarClienteNIF(nif);
-            if (obj.getNif() != null) {
+            obj = dao.BuscarClienteCodigo(codigo);
+            if (Integer.valueOf(obj.getId())!= null) {
                 txtNome.setText(obj.getNome());
             } else {
-                JOptionPane.showMessageDialog(null, "NIF inválido!");
+                JOptionPane.showMessageDialog(null, "Código inválido!");
             }
 
         }
-    }//GEN-LAST:event_txtNifKeyPressed
+    }//GEN-LAST:event_txtCodigoClienteKeyPressed
 
     /**
      * @param args the command line arguments
@@ -701,9 +699,9 @@ public class FormularioVendas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tabelaProduto;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtCodigoCliente;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JFormattedTextField txtDesconto;
-    private javax.swing.JTextField txtNif;
     private javax.swing.JTextField txtNome;
     private javax.swing.JButton txtPesquisa;
     private javax.swing.JTextField txtPesquisaProduto;

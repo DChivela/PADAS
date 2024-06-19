@@ -76,7 +76,7 @@ public class CategoriasDAO {
           }
       }
    
-   public Categorias BuscarCliente(String nome){
+   public Categorias BuscarCategorias(String nome){
        try {
            String sql = "select * from Categorias where nome =?";
            PreparedStatement stmt = conn.prepareStatement(sql);

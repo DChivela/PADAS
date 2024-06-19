@@ -290,13 +290,13 @@ public class FormularioCategorias extends javax.swing.JFrame {
        Categorias obj = new Categorias();
        CategoriasDAO dao = new CategoriasDAO();
        
-       obj = dao.BuscarCliente(nome);
+       obj = dao.BuscarCategorias(nome);
        if(obj.getNome() != null ){
            txtCodigo.setText(String.valueOf(obj.getId()));
            txtNome.setText(obj.getNome());
 
        }else{
-           JOptionPane.showMessageDialog(null,"Cliente não encontrado!");
+           JOptionPane.showMessageDialog(null,"Categoria não encontrada!");
        }
             
         }

@@ -103,6 +103,29 @@ public class ClientesDAO {
        }
        return null;
     }
+   
+      public Clientes BuscarClienteCodigo(int codigo){
+       try {
+           String sql = "select * from clientes where ClienteID = ?";
+           PreparedStatement stmt = conn.prepareStatement(sql);
+           stmt.setInt(1, codigo);
+           ResultSet rs = stmt.executeQuery();
+           Clientes obj = new Clientes();
+           if(rs.next()){
+               obj.setId(rs.getInt("ClienteID"));
+               obj.setNome(rs.getString("Nome"));
+               obj.setMorada(rs.getString("Morada"));
+               obj.setTelefone(rs.getString("Telefone"));
+               obj.setEmail(rs.getString("Email")); 
+  
+           }//Fechamento do preechimento automático
+           return obj; //Retornar o objecto Cliente após a busca
+           
+       } catch (SQLException erro) { //Caso alguma coisa deia errado
+           JOptionPane.showMessageDialog(null, "Erro ao buscar o cliente"+ erro);
+       }
+       return null;
+    }
       
    //Método para listar os clientes do Banco
    public List<Clientes>Listar(){

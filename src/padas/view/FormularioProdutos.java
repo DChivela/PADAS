@@ -456,21 +456,23 @@ public class FormularioProdutos extends javax.swing.JFrame {
         txtDescricao.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
         txtPreco.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
         txtStock.setText(tabela.getValueAt(tabela.getSelectedRow(), 4).toString());
-
-        Fornecedores f = new Fornecedores();
-        FornecedoresDAO daof = new FornecedoresDAO();
-        f = daof.BuscarFornecedores(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
+        
+        Categorias c = new Categorias();
+        CategoriasDAO daoc = new CategoriasDAO();
+        c = daoc.BuscarCategorias(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
         cbCategoria.removeAllItems();
-        cbCategoria.getModel().setSelectedItem(f);
+        cbCategoria.getModel().setSelectedItem(c);
+        
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void cbCategoriaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_cbCategoriaAncestorAdded
-        CategoriasDAO dao = new CategoriasDAO();
-        List<Categorias> lista = dao.Listar();
-        cbCategoria.removeAllItems();
-        for (Categorias c : lista) {
-            cbCategoria.addItem(c);
-        }
+// SE ESTE CÓDIGO ESTIVER HABILITADO, IMPEDIRÁ O AUTO-PREENCHIMENTO DO COMBOBOX
+//        CategoriasDAO dao = new CategoriasDAO();
+//        List<Categorias> lista = dao.Listar();
+//        cbCategoria.removeAllItems();
+//        for (Categorias c : lista) {
+//            cbCategoria.addItem(c);
+//        }
     }//GEN-LAST:event_cbCategoriaAncestorAdded
 
     private void cbCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbCategoriaMouseClicked
