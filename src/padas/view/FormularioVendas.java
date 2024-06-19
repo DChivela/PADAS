@@ -35,8 +35,8 @@ public class FormularioVendas extends javax.swing.JFrame {
                 c.getId(),
                 c.getDescricao(),
                 c.getPreco(),
-                c.getStock(),
-                c.getCategoria()
+                c.getCategoria(),
+                c.getStock()
 
             });
         }
@@ -288,12 +288,13 @@ public class FormularioVendas extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel16)
-                        .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionar)
@@ -480,7 +481,7 @@ public class FormularioVendas extends javax.swing.JFrame {
         txtCodigo.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 0).toString());
         txtProduto.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 1).toString());
         txtPreco.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 2).toString());
-        txtStock.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 3).toString());
+        txtStock.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 4).toString());
         txtCodigo.setEnabled(false);
     }//GEN-LAST:event_tabelaProdutoMouseClicked
 
@@ -577,8 +578,8 @@ public class FormularioVendas extends javax.swing.JFrame {
         if(obj.getDescricao()!=null){
             int stock = Integer.valueOf(txtStock.getText());
             int quantidade = Integer.valueOf(txtQtd.getText());
-            preco = Double.valueOf(txtPreco.getText()); //getText para pegar o texto nesse campo
-            qtd = Integer.valueOf(txtQtd.getText()); //getText serve para pegar o texto nesse campo
+            preco = Double.valueOf(txtPreco.getText()); //getText para pegar preço actual do produto
+            qtd = Integer.valueOf(txtQtd.getText()); //getText serve para a quantidade existente
             subtotal = preco*qtd; //Operação do valor do subtotal
             total += subtotal; //Operação do valor do total
             if(stock>=quantidade){ //Verificação do stock existente e do stokc solicitado
