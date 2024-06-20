@@ -109,6 +109,7 @@ public class FormularioPagamentos extends javax.swing.JFrame {
         txtTroco.setEnabled(false);
 
         txtObservacoes.setColumns(20);
+        txtObservacoes.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         txtObservacoes.setRows(5);
         jScrollPane1.setViewportView(txtObservacoes);
 
@@ -219,8 +220,8 @@ public class FormularioPagamentos extends javax.swing.JFrame {
             Date agora = new Date(); //Obtendo a data do sistema.
             SimpleDateFormat dataEUA = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss"); //Salvando a data obtida no formato Americano.
             String dataMysql = dataEUA.format(agora); //Mudando o nome para Mysql 
-            v.setData_venda(dataMysql); //Salvando o valor armazenda no formato acima.
-            v.setTotal_venda(totalVenda); //Recebendo o dado do campo txtTotalVenda.
+            v.setData(dataMysql); //Salvando o valor armazenda no formato acima.
+            v.setTotalVenda(totalVenda); //Recebendo o dado do campo txtTotalVenda.
             v.setObservacoes(txtObservacoes.getText()); //Recebendo o dado do campo Observações.
             VendasDAO vd = new VendasDAO(); //Chamando a classe VendasDAO.
             vd.Salvar(v); //Método para salvar a venda.
@@ -235,7 +236,7 @@ public class FormularioPagamentos extends javax.swing.JFrame {
                 ItensVendas item = new ItensVendas();
                 item.setVendas(v); //Recebendo os itens da venda.
                 p.setId(Integer.valueOf(meusProdutos.getValueAt(i, 0).toString())); //Pegando o 1º iten da tabela caarrinhos
-                item.setProdutos(p); //Dizer para o sistema o item recebe da classe produtos
+                item.setProdutos(p); //Dizer para o sistema que o item recebe da classe produtos
                 item.setQtd(Integer.valueOf(meusProdutos.getValueAt(i, 2).toString())); //Pegando o 2º iten da tabela caarrinhos
                 item.setSubtotal(Double.valueOf(meusProdutos.getValueAt(i, 4).toString())); //Pegando o 2º iten da tabela caarrinhos
                 qtdStock = pd.retornaQTDActualStock(p.getId());

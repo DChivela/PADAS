@@ -15,6 +15,7 @@ public class Vendas {
     private double totalVenda;
     private Clientes clientes;
     private Funcionarios funcionario;
+    private String observacoes;
 
     public int getId() {
         return id;
@@ -56,5 +57,12 @@ public class Vendas {
         this.funcionario = funcionario;
     }
 
-  
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+
 }

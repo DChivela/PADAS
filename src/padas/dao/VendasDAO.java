@@ -25,13 +25,14 @@ public class VendasDAO {
    
    public void Salvar(Vendas obj){ //CRTL + SHIFT + i para corrigir as importações
        try {
-           String sql = "insert into vendas (data, totalVenda, clienteID, funcionarioID)"
-                   + "values(?, ?, ?, ? )";
+           String sql = "insert into vendas (data, valorTotal, clienteID, observacoes)"
+                   + "values(?, ?, ?, ?)";
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setString(1, obj.getData());
            stmt.setDouble(2, obj.getTotalVenda());
            stmt.setInt(3, obj.getClientes().getId());
-           stmt.setInt(4, obj.getFuncionario().getId());
+//           stmt.setInt(4, obj.getFuncionario().getId());
+           stmt.setString(4, obj.getObservacoes());
            
            stmt.execute();
            stmt.close();
@@ -44,12 +45,12 @@ public class VendasDAO {
 public int retornaUltimoIDVenda(){
     try {
         int ultimoID = 0;
-        String sql = "Select max(id) id from tb_vendas";
+        String sql = "Select max(VendaID) VendaID from vendas";
         PreparedStatement stmt = conn.prepareStatement(sql); //Para pegar a consulta sql que criamos 
         ResultSet rs = stmt.executeQuery(); //Para executar a query criada.
         while(rs.next()){ //Para percorrer a tabela no banco de dados.
             Vendas v = new Vendas(); //Instanciando a classe vendas.
-            v.setId(rs.getInt("id")); //Percorrendo a coluna do ID.
+            v.setId(rs.getInt("VendaID")); //Percorrendo a coluna do ID.
             ultimoID = v.getId(); //Recebendo o valor do ID
         }
         return ultimoID;

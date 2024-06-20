@@ -22,7 +22,7 @@ public class ItensVendasDAO {
    }
    public void Salvar(ItensVendas obj){
        try {
-           String sql = "insert into tb_itensvendas  (venda_id, produto_id, qtd, subtotal) values(?,?,?,?)";
+           String sql = "insert into itensvenda  (vendaID, produtoID, quantidade, subtotal) values(?,?,?,?)";
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setInt(1, obj.getVendas().getId());
            stmt.setInt(2, obj.getProdutos().getId());

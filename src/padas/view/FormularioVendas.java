@@ -12,10 +12,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import padas.dao.ClientesDAO;
-import padas.dao.FornecedoresDAO;
 import padas.dao.ProdutosDAO;
 import padas.model.Clientes;
-import padas.model.Fornecedores;
 import padas.model.Produtos;
 import padas.utilitarios.Utilitarios;
 
@@ -381,6 +379,11 @@ public class FormularioVendas extends javax.swing.JFrame {
 
         btnCancelar.setFont(new java.awt.Font("Cambria", 1, 13)); // NOI18N
         btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TotalVendaLayout = new javax.swing.GroupLayout(TotalVenda);
         TotalVenda.setLayout(TotalVendaLayout);
@@ -486,15 +489,15 @@ public class FormularioVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaProdutoMouseClicked
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        int id = Integer.valueOf(txtCodigo.getText());
+        int ID = Integer.valueOf(txtCodigoCliente.getText());
 
         ClientesDAO dao = new ClientesDAO();
 
-        obj = dao.BuscarClienteCodigo(id);
+        obj = dao.BuscarClienteCodigo(ID);
         if (Integer.valueOf(obj.getId())!= null) {
-            txtNome.setText(obj.getNome());
+            txtNome.setText(obj.getNome()); //Para preencher o campo do nome
         } else {
-            JOptionPane.showMessageDialog(null, "Código inválido!");
+            JOptionPane.showMessageDialog(null, "NIF inválido!");
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
@@ -521,7 +524,7 @@ public class FormularioVendas extends javax.swing.JFrame {
                 txtStock.setText(String.valueOf(obj.getStock()));
                 txtCodigo.setEnabled(false);
             } else {
-                JOptionPane.showMessageDialog(null, "Código inválidoo!");
+                JOptionPane.showMessageDialog(null, "Código inválido!");
             }
 
         }
@@ -603,7 +606,7 @@ public class FormularioVendas extends javax.swing.JFrame {
 
     private void btnPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagamentoActionPerformed
         String nome = txtNome.getText(); //Criando a variável nome
-        int id = Integer.valueOf(txtCodigo.getText());
+        int id = Integer.valueOf(txtCodigoCliente.getText());
         obj = new Clientes();
         ClientesDAO daoc = new ClientesDAO(); //Instanciando a classe ClientesDAO
         obj = daoc.BuscarCliente(nome);
@@ -624,7 +627,6 @@ public class FormularioVendas extends javax.swing.JFrame {
     private void txtCodigoClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoClienteKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             int codigo = Integer.valueOf(txtCodigoCliente.getText());
-
             ClientesDAO dao = new ClientesDAO();
 
             obj = dao.BuscarClienteCodigo(codigo);
@@ -636,6 +638,10 @@ public class FormularioVendas extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtCodigoClienteKeyPressed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

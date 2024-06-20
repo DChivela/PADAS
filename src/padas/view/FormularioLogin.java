@@ -161,8 +161,11 @@ public class FormularioLogin extends javax.swing.JFrame {
             FuncionariosDAO dao = new FuncionariosDAO();
             dao.efectuarLogin(utilizador, senha);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Erro:" +e);
+            JOptionPane.showMessageDialog(null, "Erro:" + e);
         }
+        dispose();
+        FormularioLogin fl = new FormularioLogin();
+        fl.setVisible(false);
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

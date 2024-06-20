@@ -60,7 +60,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SIGEST DC - Área de Trabalho");
+        setTitle("PADARIA E PASTELARIA SSOARES - Área de Trabalho");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);

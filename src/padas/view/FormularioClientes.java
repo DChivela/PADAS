@@ -97,9 +97,11 @@ public class FormularioClientes extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtTelefone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel5.setText("Telefone");
 
+        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);

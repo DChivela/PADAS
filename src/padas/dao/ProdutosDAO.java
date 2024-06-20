@@ -86,7 +86,7 @@ public class ProdutosDAO {
    public Produtos BuscarProdutos(String nome){
        try {
            String sql = "Select p.produtoID, p.descricao, p.preco, c.nome, p.estoque from Produtos as p inner join"
-                   + " categorias as c on(p.produtoID=c.categoriaID) where p.descricao = ?";
+                   + " categorias as c on(p.categoriaID=c.categoriaID) where p.descricao = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, nome);
             ResultSet rs = stmt.executeQuery();
@@ -112,7 +112,7 @@ public class ProdutosDAO {
    public Produtos BuscarProdutosCodigo(int id){
        try {
            String sql = "Select p.produtoID, p.descricao, p.preco, c.nome, p.estoque from Produtos as p inner join"
-                   + " categorias as c on(p.produtoID=c.categoriaID) where p.produtoID = ?";
+                   + " categorias as c on(p.categoriaID=c.categoriaID) where p.produtoID = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -166,7 +166,7 @@ public class ProdutosDAO {
        List<Produtos> lista = new ArrayList<>();
        try {
            String sql = "Select p.produtoID, p.descricao, p.preco, c.nome, p.estoque from Produtos as p inner join"
-                   + " categorias as c on(p.categoriaID=c.categoriaID) where p.descricao = ?";
+                   + " categorias as c on(p.categoriaID=c.categoriaID) where p.descricao like ?";
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setString(1, nome);
            ResultSet rs = stmt.executeQuery();
@@ -221,7 +221,7 @@ public class ProdutosDAO {
     public int retornaQTDActualStock(int id){
         try {
             int StockActual = 0; //Valor inicial da variável StockActual
-            String sql = "Select qtd_stock from produtos where produtoID=?";
+            String sql = "Select estoque from produtos where produtoID=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id); //Para dar baixa consoante o ID do produto.
             ResultSet rs = stmt.executeQuery();

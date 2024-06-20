@@ -380,7 +380,7 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         obj.setMorada(txtMorada.getText());
         obj.setTelefone(txtTelefone.getText());
         obj.setUtilizador(txtUtilizador.getText());
-        obj.setSenha(txtUtilizador.getText());
+        obj.setSenha(txtSenha.getText());
         
         FuncionariosDAO dao = new FuncionariosDAO();
         dao.Salvar(obj);

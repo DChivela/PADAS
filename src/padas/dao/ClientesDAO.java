@@ -84,7 +84,7 @@ public class ClientesDAO {
    
    public Clientes BuscarCliente(String nome){
        try {
-           String sql = "select * from clientes where nome =?";
+           String sql = "select * from Clientes where Nome =?";
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setString(1, nome);
            ResultSet rs = stmt.executeQuery();
